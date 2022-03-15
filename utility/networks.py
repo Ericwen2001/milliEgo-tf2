@@ -82,9 +82,9 @@ def build_model_cross_att(cfg, imu_length=20, input_shape=(1, 64, 256, 3), mask_
         fc_rot = TimeDistributed(Dense(3), name='fc_rot')(fc_orientation_2)
 
         model = Model(inputs=[image_1, image_2, imu_data], outputs=[fc_trans, fc_rot])
+        #debugging:
         if istraining == False:   
-             model = Model(inputs=[image_1, image_2, imu_data], outputs=[net])
-        
+             model = Model(inputs=[image_1, image_2, imu_data], outputs=[fc_trans, fc_rot])
         
 
         return model
